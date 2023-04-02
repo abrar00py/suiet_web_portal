@@ -1,0 +1,379 @@
+{% extends 'engineering/engineering_base.html' %}
+{% load static %}
+{% block title %}
+  Srinivas University - INSTITUTE OF ENGINEERING AND TECHNOLOGY
+{% endblock %}
+{% block content %}
+{% include 'engineering/engineering_navbar.html' %}
+<style>
+    #hero {
+        width: 100%;
+        height: 100vh;
+        background: url("{% static 'img/srinivas.jpg' %}") top center;
+        background-size: cover;
+        position: relative;
+      }
+      .one h1 {
+        text-align: center;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+      }
+      .one h1:before {
+        width: 28px;
+        height: 5px;
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: 3px;
+        left: 50%;
+        margin-left: -14px;
+        background-color: #b80000;
+      }
+      .one h1:after {
+        width: 100px;
+        height: 1px;
+        display: block;
+        content: "";
+        position: relative;
+        margin-top: 25px;
+        left: 50%;
+        margin-left: -50px;
+        background-color: #b80000;
+      }
+      
+</style>
+<section  id="hero" class="d-flex flex-column justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-12">
+        <h1>SRINIVAS UNIVERSITY <br>INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
+        <h2>" THE WHOLE PURPOSE OF EDUCATION IS TO TURN MIRRORS INTO WINDOWS "</h2>
+        <a href="https://youtu.be/C5q4rnGlUss" class="glightbox play-btn mb-4"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+    <section id="about" class="about">
+        <div class="container">
+    
+          <div class="section-title">
+            <h2>About INSTITUTE OF ENGINEERING AND TECHNOLOGY</h2>
+            <p style="text-align: justify; font-size: 18px;" class="fw-bolder">The Institute of Engineering & Technology is a constituent college under Srinivas University started with offering 4 years Bachelor Degree program B.Tech. in Civil Engineering, Mechanical Engineering, Computer Science Engineering, Electronics & Communication Engineering, Robotics, Artificial Intelligence & Machine Learning, Cyber Security & Cyber Forensics, Data Science, Cloud Technology & Information Security and Block Chain Technology & Distributed Computing . The college offers 2 years Master Degree program M.Tech in Structural Engineering, Construction Management, Computer Science & Engineering, Industrial Nano- Biotechnology, and Artificial Intelligence & Virtual Reality. The college also offers doctoral program in all the steams leading to Ph.D degree. The college is located at Srinivas University Campus, Mukka, Mangaluru.</p>
+            <br><p style="text-align: justify; font-size: 18px;" class="fw-bolder">The Institute of Engineering & Technology was established with the aim of providing international standards in education and training and hence to prepare graduates with Knowledge and Skills in the emerging fields of Engineering. It opens knowledge by immersing students in a rigorous and innovative curriculum and culture of real-world, experience-based learning. The Institution has a continually evolving infrastructure development programme which quickly adapts to the challenges of the new evolution in engineering technology. Located in the sylvan surroundings and cool climes of picturesque Srinivas University Campus at Mukka and abets the National Highway 66. The college campus is developed in a lush green environment with well qualified & experienced faculty, state-of-the-art laboratories and infrastructural facilities, high speed wi-fi internet connection and digital library facilities with the aim of providing Technical Education, Professional Training, Soft Skill Training and Research facilities in the field of Engineering, Technology and Management Science as per International Standards with the aim of creating Technically Sound Engineers and Decision Makers who can establish themselves successfully in the industry and global market. The institute has hi-tech gallery class rooms with latest teaching aids such as LCD projectors, audio system and multimedia facilities to train the students by implementing e -learning and teaching environment. The institute aims to produce career – ready graduates who are immediately employable, self-reliant and ethical. It has been the endeavour of the college to provide a healthy educational environment that fosters innovation and enthusiasm in students. Having well established facilities and amenities, the College of Engineering & Technology is on the threshold of a quantum leap.</p>
+          </div>
+    
+          <div class="row content" style="text-align: justify;">
+            <div class="col-lg-6">
+              <p class="fw-bold">
+                Departments :
+              </p>
+              <ul>
+                <li><i class="ri-check-double-line"></i> Computer Science Department </li>
+                <li><i class="ri-check-double-line"></i> E&C Department </li>
+                <li><i class="ri-check-double-line"></i> Mechanical Department</li>
+                <li><i class="ri-check-double-line"></i> AI & ML Department</li>
+                <li><i class="ri-check-double-line"></i> Robotics and AIML Department</li>
+                <li><i class="ri-check-double-line"></i> MBA</li>
+                <li><i class="ri-check-double-line"></i> Civil Department</li>
+                <li><i class="ri-check-double-line"></i> Cyber Security & Cyber Forensics</li>
+                <li><i class="ri-check-double-line"></i> Material Science and Engineering</li>
+                <li><i class="ri-check-double-line"></i> Data Science</li>
+              </ul>
+            </div>
+            {% comment %} <div class="col-lg-6 pt-4 pt-lg-0">
+              <h3 class="fw-bold">
+                VISION & MISSION
+              </h3>
+              <hr>
+              <p class="fw-bold">
+                VISION :
+              </p>
+              <p style="text-align: justify;">
+                To be a trendsetter among universities and build students who emerge as leaders with competence, conscience and compassion by empowering them with sound education and high standards of ethical and professional behaviour enabling them to build and promote a more humane, just and sustainable world for future generations.
+              </p>
+    
+              <p class="fw-bold">
+                MISSION :
+              </p>
+              <p style="text-align: justify;">
+                Our mission is to provide an exceptional learning environment where students can develop and enhance their leadership and teamwork skills, creative and intellectual powers and passion for learning by providing an uncompromising standard of excellence in teaching; embodying the spirit of excellence to educate the citizen-leaders of society with distinction.            </p>
+    
+              <a href="#" class="btn-learn-more">Learn More</a>
+            </div>
+          </div> {% endcomment %}
+    
+        </div>
+      </section>
+
+
+
+      <section id="cta" class="cta">
+        <div class="container">
+    
+          <div class="row" >
+            <div class="col-lg-3 text-center">
+              <img src="{% static 'img/Engineeringimage/dr-thomas-pinto.png' %}" class="" alt="" width="300">
+            </div>
+            <div class="col-lg-9 text-center text-lg-start align-middle mt-5" >
+              <h3 class="mt-4 h2">Dr. Thomas Pinto</h3>
+              <figcaption class="blockquote-footer mt-2 fw-bold">
+                Dean of  <cite title="Source Title">INSTITUTE OF ENGINEERING AND TECHNOLOGY</cite>
+              </figcaption>
+              <p class="fw-bolder"> " Times are changing and as we look around, we see several disruptions in the regular day to day activities. “Progress is impossible without change, and those who cannot change their minds cannot change anything” said George Bernard Shaw. It is imperative that we go beyond and seek out new paths and be pioneers. The Srinivas University has a definitive edge over many other universities in that it has started new courses in emerging fields. In the field of engineering & technology, Nanotechnology, Cyber Security & Forensic Science, Cloud technology, Data science are novel fields where opportunities are opening up. The traditional engineering courses such as Mechanical, Civil, Electronics & Communication and Computer science, being the bedrock on which modern trends are built, continue to have a large following."</p>
+            </div>
+            
+          </div>
+    
+        </div>
+      </section>
+
+
+
+      <!-- ======= Services Section ======= -->
+  <section id="services" class="services">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Departments under Institute of Engineering & Technology</h2>
+        <p>Success is the sum of details - Harvey Firestone</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-pc-display-horizontal"></i></div>
+            <h4><a href="{% url 'cs_department' %}">CS Department</a></h4>
+            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-diagram-3-fill"></i></div>
+            <h4><a href="">E&C Department</a></h4>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-gear-fill"></i></div>
+            <h4><a href="">Mechanical Department</a></h4>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-bug-fill"></i></div>
+            <h4><a href="">AI&ML Department</a></h4>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-motherboard-fill"></i></div>
+            <h4><a href="">Robotics and AIML Department</a></h4>
+            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-people-fill"></i></div>
+            <h4><a href="">MBA</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-exclamation-circle-fill"></i></div>
+            <h4><a href="">Cyber Security & Cyber Forensics</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-building"></i></div>
+            <h4><a href="">Civil Department</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-life-preserver"></i></div>
+            <h4><a href="">Material Science and Engineering</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+        
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <div class="container reveal mt-4 pt-4" id="eventandnews">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="one">
+          <h1 class="fw-bold">Events</h1>
+        </div>
+        <div class="mt-4">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for event in event %}
+              <div class="col">
+                <div class="card h-100">
+                  <a href="{% url 'engineering_events_details' event.Title %}" style="text-decoration: none;">
+                  <img src="{{ event.Image.url }}" class="card-img-top" height="200" alt="Skyscrapers" />
+                  <div class="card-body" style=" overflow: hidden; height: 100px ;">
+                    <h5 class="card-title fw-bold">{{ event.Title }}</h5>
+                    <p class="card-text">{{ event.discription }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{ event.date }}</small>
+                  </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="row ml-auto mt-4 mb-3">
+            <a style="text-align: center;" href="{% url 'engineering_events' %}">See More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4 mt-4">
+        <div class="one">
+          <h1 class="fw-bold">Announcement</h1>
+        </div>
+        <div class="overflow-auto mt-4" style="height: 450px;">
+          <ul class="list-group list-group-light ">
+          {% for news in news %}
+            {% comment %} <div class="mt-4">
+              <h5 class="card-header">{{ news.title }}</h5>
+              <div class="card-body">{{ news.content }}</div>
+            </div> {% endcomment %}
+            {% comment %} <div class="alert alert-info"  role="alert">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h6 class="alert-heading alert-link">{{ news.title }}</h6>
+                </div>
+                <div class="col-sm-4">
+                  <h6>{{ news.date }}</h6>
+                </div>
+              </div>
+              <p class="text-truncate h6" style="max-width: 400px;">{{ news.content }}</p>
+            </div> {% endcomment %}
+            
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <div>
+                  <div class="fw-bold">{{ news.title }}        {{ news.date }}</div>
+                  <div class="text-muted">{{ news.content }}</div>
+                </div>
+                <span class="badge rounded-pill badge-danger">New</span>
+              </li>
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div>
+    </div>
+
+    <div>
+      <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943.6120901978502!2d74.79097927604539!3d13.021391197694522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba352113ffb7753%3A0x55748a891457f561!2sSrinivas%20University!5e0!3m2!1sen!2sin!4v1670657489975!5m2!1sen!2sin" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="container">
+
+      <div class="row mt-5">
+
+        <div class="col-lg-4">
+          <div class="info">
+            <div class="address">
+              <i class="ri-map-pin-line"></i>
+              <h4>Location:</h4>
+              <p>Srinivas Nagar, Mukka, Surathkal, Mangalore</p>
+            </div>
+
+            <div class="email">
+              <i class="ri-mail-line"></i>
+              <h4>Email:</h4>
+              <p>admission@srinivasuniversity.edu.in</p>
+            </div>
+
+            <div class="phone">
+              <i class="ri-phone-line"></i>
+              <h4>Call:</h4>
+              <p>+91 824 2444891</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-8 mt-5 mt-lg-0">
+
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  
+
+
+</main>
+<div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+{% endblock %}

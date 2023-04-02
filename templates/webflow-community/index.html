@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>WebFlow Community - SUIET</title>
+
+    <!-- Favicons -->
+  <link href="{% static 'webflow-community/assets/images/favi.png' %}" rel="icon">
+  <link href="{% static 'webflow-community/assets/images/favi.png' %}" rel="apple-touch-icon">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'webflow-community/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'webflow-community/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'webflow-community/assets/css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'webflow-community/assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'webflow-community/assets/css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 579 Cyborg Gaming
+
+https://templatemo.com/tm-579-cyborg-gaming
+
+-->
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  {% comment %} <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div> {% endcomment %}
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'webflow-community/assets/images/logo.png' %}" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="#coreteam">Core Team</a></li>
+                        <li><a href="#members">Other Members</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        <li><a href="#">Profile <img src="{% static 'webflow-community/assets/images/profile-header.jpg' %}" alt=""></a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+<style>
+  .main-banners {
+    background-position: center center;
+    background-size: cover;
+    min-height: 400px;
+    border-radius: 23px;
+    padding: 80px 60px;
+  }
+</style>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banners">
+            <div class="row">
+              <video autoplay id="myvideo" src="{% static 'webflow-community/video/videp.mp4' %}" data-second="4 "  poster="{% static '/webflow-community/assets/images/bannew.png' %}"/>
+              
+            </div>
+            <a href="hi" class="justify-content-end">hi</a>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em>Faculty</em> Co-ordinators</h4>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/popular-01.jpg' %}" height="200" alt="">
+                      <h4>Mrs Sushma<br><span>Sandbox</span></h4>
+                      <ul>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/cshod.jpg' %}" height="200" alt="">
+                      <h4>Dr Nethravathi P.S<br><span>Battle S</span></h4>
+                      <ul>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/Thanmayee CSE.png' %}" height="200" alt="">
+                      <h4>Mrs Thanmayee<br><span>Steam-X</span></h4>
+                      <ul>
+                       
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets\images\swarna.jpg' %}" height="200" alt="">
+                      <h4>Mrs Swarna<br><span>Legendary</span></h4>
+                      <ul>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                  
+                        
+                 
+                  
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular" id="coreteam">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em> Developement </em> Core Team</h4>
+                </div>
+                <div class="row">
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'sujay' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/sujay.png'%}" alt="">
+                      <h4>Sujay Adkesar<br><span></span></h4>
+                    </div></a>
+                  </div>
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'sidharth' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/sid.jpg'%}" alt="">
+                      <h4>Sidharth V.K<br><span>Full Stack (Django)</span></h4>
+                      </div></a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'abrar' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/abrar.jpg' %}" alt="">
+                      <h4>Abrar Navalur<br><span>Full Stack (Django)</span></h4>
+                    </div></a>
+                  </div>
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'shraddesh' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/shraddesh (2).jpg' %}" alt="">
+                      <h4>Shraddesh Sangaokar<br><span>Front-End Dev</span></h4>
+                    </div></a>
+                  </div>
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'sam' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/sam.jpg' %}" alt="">
+                      <h4>Sam Avin<br><span>Front-End Designer</span></h4>
+                    </div></a>
+                  </div>
+
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'aditya' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/aditya (2).jpg' %}" alt="">
+                      <h4>Aditya Jagdankar<br><span>Front-End Designer</span></h4>
+                    </div></a>
+                  </div>
+
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'ammar' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/ammar.jpg' %}" alt="">
+                      <h4>Md Ammar Hanagikatti<br><span>Front-End Designer</span></h4>
+                    </div></a>
+                  </div>
+
+                  <div class="col-lg-3 col-sm-6">
+                    <a href="{% url 'sathwik' %}">
+                    <div class="item">
+                      <img src="{% static 'webflow-community/assets/images/sathwik.png' %}" alt="">
+                      <h4>Sathwik R<br><span>Back-End</span></h4>
+                    </div></a>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
+
+          <!-- ***** Gaming Library Start ***** -->
+          <div class="gaming-library" id="members">
+            <div class="col-lg-12">
+              <div class="heading-section">
+                <h4><em>Other</em> Members</h4>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><img src="{% static 'webflow-community/assets/images/ankith.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><h4>Ankith Shetty</h4><span>Front-End Designer</span></li>
+                  <li><h4>Date Joined</h4><span>08/12/2022</span></li>
+                  <li><h4>Github</h4><span>@Shettyankith</span></li>
+                  <li><h4>Contact</h4><span>shettyankith2003@gmail.com</span></li>
+                  
+                </ul>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><img src="{% static 'webflow-community/assets/images/sneha (2).jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><h4>Sneha Jha</h4><span>Front-End Designer</span></li>
+                  <li><h4>Date Joined</h4><span>09/12/2022</span></li>
+                  <li><h4>Github</h4><span>@jhasneha007</span></li>
+                  <li><h4>Contact</h4><span>jhasneha701@gmail.com</span></li>
+                  
+                </ul>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><img src="{% static 'webflow-community/assets/images/adwaith.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><h4>Adwaith N.K</h4><span>Front-End Designer</span></li>
+                  <li><h4>Date Joined</h4><span>10/12/2022</span></li>
+                  <li><h4>Instagram</h4><span>@__.adwaith._</span></li>
+                  <li><h4>Contact</h4><span>adwaithnk122@gmail.com</span></li>
+                  
+                </ul>
+              </div>
+              <div class="item last-item"> 
+                <ul>
+                  <li><img src="{% static 'webflow-community/assets/images/ved.jpg' %}" alt="" class="templatemo-item"></li>
+                  <li><h4>A.K Vedamrith</h4><span>Digital Media Operator</span></li>
+                  <li><h4>Date Joined</h4><span>01/12/2022</span></li>
+                  <li><h4>Instagram</h4><span>@ft.akved</span></li>
+                  <li><h4>Contact</h4><span>rpk6757@gmail.com</span></li>
+                 
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="main-button">
+                <a href="#">View More</a>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Gaming Library End ***** -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 <a href="#">WebFlow Community</a> SUIET. All rights reserved. 
+          
+          <br>Designed by - WebFlow Community</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+  <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'assets/js/tabs.js' %}"></script>
+  <script src="{% static 'assets/js/popup.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+  </body>
+
+</html>

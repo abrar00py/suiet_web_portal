@@ -1,0 +1,1792 @@
+{% extends 'engineering/engineering_base.html' %}
+{% load static %}
+{% block title %}
+Srinivas University
+{% endblock %}
+{% block content %}
+
+
+<style>
+  .profile-card-2 {
+    max-width: 200px;
+    max-height: 200px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .profile-card-3 {
+    max-width: 150px;
+    max-height: 150px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .profile-card-2 img, .profile-card-3 img {
+    transition: all linear 0.25s;
+  }
+  
+  .profile-card-2 .profile-name {
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+    font-size: 20px;
+    color: #FFF;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    transition: all linear 0.25s;
+  }
+  .profile-card-3 .profile-name {
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+    font-size: 17px;
+    color: #FFF;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    transition: all linear 0.25s;
+  }
+  
+ 
+  
+  
+  .profile-card-2:hover img, .profile-card-3:hover img {
+    filter: grayscale(100%);
+  }
+  
+  .profile-card-2:hover .profile-name, .profile-card-3:hover .profile-name {
+    bottom: 80px;
+  }
+
+
+</style>
+
+<header id="header" class="fixed-top header-inner-pages">
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <div class="col-xl-9 d-flex align-items-center justify-content-between">
+        <div class="d-flex">
+          <img src="{% static 'assets\img\Srinivas_University_logo.gif' %}" alt="" style="height: 50px;">
+          <h1 class="logo me-auto me-lg-0 fw-bold" style="padding-left: 20px;"><a href="{% url 'home' %}" class="logo me-auto me-lg-0"></a><a href="{% url 'home' %}" ><span>Srinivas<br/></span>University</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+        </div>
+       
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li><a class="nav-link scrollto " href="{% url 'engineering' %}">Home</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'engineering' %}#about">About</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'engineering' %}#services">Institutes</a></li>
+            <li><a class="nav-link scrollto " href="{% url 'engineering_gallery' %}">Gallery</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'engineering' %}#campus">Campus</a></li>
+            <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="#">Drop Down 1</a></li>
+                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="#">Deep Drop Down 1</a></li>
+                    <li><a href="#">Deep Drop Down 2</a></li>
+                    <li><a href="#">Deep Drop Down 3</a></li>
+                    <li><a href="#">Deep Drop Down 4</a></li>
+                    <li><a href="#">Deep Drop Down 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Drop Down 2</a></li>
+                <li><a href="#">Drop Down 3</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <!-- .navbar -->
+
+        {% if user.is_active %}
+        <li>
+        <div class="dropdown">
+          <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img
+                  
+                    src="{{profile.PICTURE.url}}"
+                    
+                    class="rounded-circle"
+                    height="40"
+                    alt="{{user.first_name}}"
+                    loading="lazy"
+                  />
+          </a>
+        
+          <ul class="dropdown-menu mt-3" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="">{{user.first_name}} {{user.last_name}}</a></li>
+            <li><a class="dropdown-item" href="{% url 'profile' %}">My profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+      </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+
+        {% else %}
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+        <a href="{% url 'login' %}" class="get-started-btn scrollto">Sign in</a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+
+<main id="main" class="">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <ol>
+        <li><a href="{% url 'engineering' %}">Home</a></li>
+        <li><a href="{% url 'cs_department' %}">CS Department Details</a></li>
+        <li>CS Department Overview</li>
+      </ol>
+      <h2>Overview</h2>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+  <section class="inner-page">
+    <div class="">
+      
+
+
+
+
+      <div class="container">
+        <div class="row">
+            <div class="col-4">
+              <div class="list-group list-group-light" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active px-3 border-0" id="list-home-list"
+                  data-mdb-toggle="list" href="#list-overview" role="tab" aria-controls="list-home">Overview</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-profile-list"
+                  data-mdb-toggle="list" href="#list-vision-mission" role="tab" aria-controls="list-profile">Vision and Mission</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-profile-list"
+                  data-mdb-toggle="list" href="#list-Course-Objectives" role="tab" aria-controls="list-profile">Course Objectives</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-messages-list"
+                  data-mdb-toggle="list" href="#list-Faculty" role="tab" aria-controls="list-messages">Faculty</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-syllabus" role="tab" aria-controls="list-settings">Syllabus</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Teaching-Plan" role="tab" aria-controls="list-settings">Teaching Plan</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Acadamic-Calender" role="tab" aria-controls="list-settings">Acadamic Calender</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Study-Material" role="tab" aria-controls="list-settings">Study Material</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Question-Bank" role="tab" aria-controls="list-settings">Question Bank</a>
+                <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Student-Club" role="tab" aria-controls="list-settings">Student's Association</a>
+                  <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Industry-Visit" role="tab" aria-controls="list-settings">Industry Visit</a>
+                  <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Workshop" role="tab" aria-controls="list-settings">Workshop / Seminar</a>
+                  <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Placement" role="tab" aria-controls="list-settings">Placement</a>
+                  <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+                  data-mdb-toggle="list" href="#list-Alumini" role="tab" aria-controls="list-settings">Alumini</a>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-overview" role="tabpanel"
+                  aria-labelledby="list-home-list">
+                  <div class="container">
+                    <h4 class="fw-bold" >DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</h4>
+                        <hr style="width: auto;">
+                    
+                    <p class="mt-2">
+                        The department of Computer Science & Engineering was started in the time 2013 with a pupil input of 60 to feed to the requirements of software diligence. Further, the input was increased to 120 in the time 2009 and latterly to 180 in the time 2014. In order to produce specialization incorporating unborn chops specified by global top- notch companies and grounded on their conditions, the institute has added more technical programs in confluence with Computer Science & Engineering.
+                    </p>
+                    <h5 class="fw-bold">About the Course</h5>
+                    <p>The B.Tech degree in Computer Science and Engineering at Srinivas University is aimed at nurturing and developing professionals of the high quality to cater to the needs of industry and academia. The credit based curriculum is focused on industry-linking, technology-orientation and research which mirrors the principles of Srinivas University of pursuit of knowledge. Apart from offering common core subjects, extends to its graduates the flexibility to select from a wide range of elective subjects, which enables them to gain domain knowledge and practice-oriented learning in the key aspects of Computer Science and Engineering—as well as latest academic insights into the salient advancements and emerging technologies. Electives thus offered aim at equipping graduates with the skills and expertise required to design and develop computer software that is applied to diverse system based environments; computing solutions for optimizing and enhancing the performance of systems; and computers to solve challenges in areas such as robotics, computer vision, Security, image processing , pattern recognition techniques, machine learning and emerging technologies.</p>
+                    
+                    <p class="fw-bold">Career Opportunity:</p>
+                    <p>Computer Science Engineering is one of the most sort of disciplined Engineering. It is the Practical and Scientifically approach to its application. This is the most look creative and Competitive course to Study.</p><br>
+                    <p>Computer Science Engineering involves Design and of computational process and computer. In computer science engineering, we will go through the Algorithms, Programming languages, Operating Systems, Database Management Systems, Computer Network, Computer Graphics and Artificial Intelligence. Software Products and Solutions are used in all most all the Industries across the World. Major Industries which uses Software are Banking, Insurance, Retail, Power, Exploration, Aeronautics, Defence, Consulting, Online Shopping and Big Data Analytics.</p><br>
+                    <p>Software Industries are divided into Product Based Industries and Service Based Industries. Product Based industries have their own software as the product or some System Platforms. They normally offer 4-5 LPA. Some Companies like Google, Microsoft and Adobe offer 8 LPA.</p><br>
+                    <p>These companies have Great working Culture and High Market Value, but they require a good knowledge of Aptitude and understanding in the Programming language. They have very competitive Requirement for selection. Service-Based companies develop their Customer’s System platforms and Customer’s Software. They have Tight Timeline, Competitive Environment and Highly Challenging Jobs. They offer an initial package of 3 LPA, but after 2 plus years of experience, the salary growth is exponential based on the Performance. They require high skills in Programming languages and Communication Skills with Aptitude. These recruiters are HCL, Wipro, TCS, Infosys, etc.</p>
+
+                  </div>
+    
+                </div>
+                <div class="tab-pane fade" id="list-vision-mission" role="tabpanel" aria-labelledby="list-profile-list">
+                  <div>
+      
+                    <div class="container p-3">
+                        <h4 class="fw-bold" >VISION AND MISSION</h4>
+                        <hr style="width: auto;">
+                        <h5 class="fw-bold" >VISION</h5>
+                        <p s>To advance the state of the art in computer science and engineering by working on cutting edge research topics, publishing quality research papers and filing enduring patents.
+                        </p>
+                        <h5 class="fw-bold">MISSION</h5>
+                        <p >Imparting strong establishments and connected angles in both Computer Science Theory and Programming rehearses
+      
+                            Providing preparing and empowering R and D and Consultancy Services in wilderness regions of Computer Science and Engineering with a Global viewpoint
+                            
+                            Fostering the most elevated goals of morals, values and making consciousness of the job of Computing in Global Environment
+                            
+                            Educating and setting up the alumni, very looked for after, profitable, and all around regarded for their work culture.</p>
+                        <h5 class="fw-bold" >DEPARTMENT CONTACT</h5>
+                        <p class="fw-bold" >Dr. Netravathi P S</p>
+                        <p  style="margin-top: -20px;">Ph.D (Computer & Information Sciences) & Post-Doctoral Fellow</p>
+                        <p  style="margin-top: -20px;">nethrakumar.ccis@srinivasuniversity.edu.in</p>
+                      </div>
+      
+                  </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-Course-Objectives" role="tabpanel" aria-labelledby="list-settings-list">
+                  
+
+
+                  <div class="container p-3">
+                    <h4 class="fw-bold" >Course Objectives</h4>
+                    <hr style="width: auto;">
+                    <h5 class="fw-bold" >Goals</h5>
+                    <ul>
+                    <li>To advance the state of the art in computer science and engineering by working on cutting edge research topics, publishing quality research papers and filing enduring patents.
+                    </li></ul>
+                    <h5 class="fw-bold">Objectives</h5>
+                    <ul>
+                      <li>Upon successful completion of a major in computer science and information sciences, students will be able to:
+                      </li>
+                      <li>Demonstrate proficiency in problem-solving techniques using the computer
+                      </li>
+                      <li>Demonstrate proficiency in at least two high-level programming languages and two operating systems
+                      </li>
+                      <li>Demonstrate proficiency in the analysis of complex problems and the synthesis of solutions to those problems
+                      </li>
+                      <li>Demonstrate comprehension of modern software engineering principles
+                      </li>
+                      <li>
+                        Demonstrate a breadth and depth of knowledge in the discipline of computer science</li>
+                    </ul>
+
+                    <h5 class="fw-bold">Special Features of the Programme:
+                    </h5>
+                    <ul>
+                      <li>Industry oriented syllabus with special focus on experimental learning.
+                      </li>
+                      <li>Placement support and research oriented projects for every student.
+                      </li>
+                      <li>Focus on smart skill development & training on competitive exams.
+                      </li>
+                      <li>Have an new system of syllabus configuration where student has made to learn 5 theories,1 Practically + Theory, and 2 labs in each semester.                        
+                      </li>
+                      <li>Earn while Learn Opportunity in/Software/hardware/
+                        production/Design/quality maintenance by company delegate’s
+                      </li>
+                    </ul>
+
+                    <h5 class="fw-bold">Short Range:
+                    </h5>
+                    <ul>
+                      <li>
+                        To form and utilize current guides for powerful educating
+                      </li>
+                      <li>
+                        To modernize the Laboratories with cutting edge programming, equipment,                        
+                      </li>
+                      <li>Interfacing and systems administration segments to guarantee all-round advancement of understudies through conduction of self-continued preparing programs
+                      </li>
+                      <li>To compose and direct transient courses/workshops/FDPs/classes on ongoing patterns in IT at National and International dimensions on standard premise
+                      </li>
+                    </ul>
+
+
+                    <h5 class="fw-bold">Long Range
+                    </h5>
+                    <ul>
+                      <li>To turn out to be a piece of the Industry and Research associations at National and International dimensions To advance Industry-Institute Interactions through undertakings, consultancy and official improvement programs
+                      </li>
+                      <li>To advance innovative work exercises in the boondocks zones of Computer Science and designing To go into comprehension with comprehensively prestigious Universities. To create Centers of Excellence in center regions.
+                      </li>
+                      <li>Artificial Intelligence and Machine Learning Internet of Things, Digital/Device Mesh, User Experience.
+                      </li>
+                      <li>To reinforce Entrepreneurship Development Cell To give essential qualities to empowering the understudies to improve and progress toward becoming business visionaries
+                      </li>
+                    </ul>
+
+                    <h5 class="fw-bold">Program Educational Objectives:
+                    </h5>
+                    <ul>
+                      <li>
+                        To prepare students to meet the industry requirements at global level competitiveness.                        
+                      </li>
+                      <li>To develop the students analytical skills to enable them to understand real world problems and formulate solutions.
+                      </li>
+                      <li>To impart basic education to students in the areas of Design Engineering, Manufacturing Engineering and Management, and Thermal Sciences that will enable them to take up higher studies in these areas.
+                      </li>
+                      <li>To allow students to work in teams through group project works and thus help them achieve interpersonal and communication skills.
+                      </li>
+                      <li>To inculcate the habit of lifelong learning, adherence to ethics in profession, concern for environmental, and regard for good professional practices.
+                      </li>
+                    </ul>
+
+
+                  </div>
+
+
+
+                </div>
+
+
+                <div class="tab-pane fade" id="list-Faculty" role="tabpanel" aria-labelledby="list-messages-list">
+                  
+                    <div class="container">
+      
+                        {% comment %} <ul class="list-group list-group-light">
+                            {% for faculty in faculty  %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-4 mt-2">
+                              <div class="d-flex align-items-center">
+                                <img src="{{faculty.image.url}}" alt="" style="width: 45px; height: 45px"
+                                  class="rounded-circle" />
+                                <div class="ms-3">
+                                  <p class="fw-bold mb-1">{{faculty.name}}</p>
+                                <p class="text-muted mb-0">{{faculty.Designation}}</p>
+                                </div>
+                              </div>
+                              <span class="badge rounded-pill badge-success">More details</span>
+                            </li>
+                            {% endfor %}
+                            
+                            
+                          </ul> {% endcomment %}
+      
+      
+      
+                          <table class="table align-middle mb-0 bg-white">
+                            <thead class="bg-light">
+                                
+                              <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Qualification</th>
+                                <th>Experience</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for faculty in faculty  %}
+                              <tr>
+                                <td>
+                                    <p class="fw-bold text-muted p-2">{{forloop.counter}}</p>
+                                </td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                        src="{{faculty.image.url}}"
+                                        class="rounded-circle"
+                                        alt=""
+                                        style="width: 55px; height: 60px"
+                                        />
+                                    <div class="ms-3">
+                                      <p class="fw-bold mb-1">{{faculty.name}}</p>
+                                      <p class="text-muted mb-0">{{faculty.Designation}}</p>
+                                    </div>
+                                  </div>
+                                </td>
+                                
+                                <td>
+                                    {{faculty.qualification}}
+                                </td>
+                                <td>{{faculty.Teaching_Experience}} Years</td>
+                                <td>
+                                  <button
+                                          type="button"
+                                          class="btn btn-link btn-rounded btn-sm fw-bold"
+                                          data-mdb-ripple-color="dark"
+                                          style="text-decoration: none;"
+                                          data-bs-toggle="modal" data-bs-target="#{{faculty|cut:"."|cut:" "}}"
+                                          >
+                                    view
+                                  </button>
+                                </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+      
+                    </div>
+      
+                </div>
+                <div class="tab-pane fade" id="list-syllabus" role="tabpanel" aria-labelledby="list-settings-list">
+                  
+                    <div class="container">
+                      <h4 class="fw-bold" >SYLLABUS</h4>
+                      <hr style="width: auto;">
+      
+                        <div class="accordion" id="accordionExampleY">
+      
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOneY">
+                                <a class="accordion-button" type="button" data-mdb-toggle="collapse"
+                                  data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY">
+                                  <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>1st Semester
+                              </a>
+                              </h2>
+                              <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
+                                data-mdb-parent="#accordionExampleY">
+                                <div class="accordion-body" style="height: 600px;">
+                                    NONE
+                                </div>
+                              </div>
+                            </div>
+      
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwoY">
+                                <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                  data-mdb-target="#collapseTwoY" aria-expanded="false" aria-controls="collapseTwoY">
+                                  <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>2nd Semester
+                              </a>
+                              </h2>
+                              <div id="collapseTwoY" class="accordion-collapse collapse" aria-labelledby="headingTwoY"
+                                data-mdb-parent="#accordionExampleY" >
+                                <div class="accordion-body" style="height: 600px;">
+                                  NONE                              
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThreeY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapseThreeY" aria-expanded="false" aria-controls="collapseThreeY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>3rd Semester
+                                </a>
+                                </h2>
+                                <div id="collapseThreeY" class="accordion-collapse collapse" aria-labelledby="headingThreeY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    <iframe src="{% static 'pdf/engineering/cs_department/Syllabus_3rd_Sem.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+      
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingfourY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapsefourY" aria-expanded="false" aria-controls="collapsefourY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>4th Semester
+                                </a>
+                                </h2>
+                                <div id="collapsefourY" class="accordion-collapse collapse" aria-labelledby="headingfourY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    <iframe src="{% static 'pdf/engineering/cs_department/4Sem_Syllabus_2021.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingfiveY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapsefiveY" aria-expanded="false" aria-controls="collapsefiveY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>5th Semester
+                                </a>
+                                </h2>
+                                <div id="collapsefiveY" class="accordion-collapse collapse" aria-labelledby="headingfiveY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    <iframe src="{% static 'pdf/engineering/cs_department/5Sem_Syllabus_2021.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSixY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapseSixY" aria-expanded="false" aria-controls="collapseSixY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>6th Semester
+                                </a>
+                                </h2>
+                                <div id="collapseSixY" class="accordion-collapse collapse" aria-labelledby="headingSixY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    <iframe src="{% static 'pdf/engineering/cs_department/6Sem_Syllabus_2021.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSevenY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapseSevenY" aria-expanded="false" aria-controls="collapseSevenY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>7th Semester
+                                </a>
+                                </h2>
+                                <div id="collapseSevenY" class="accordion-collapse collapse" aria-labelledby="headingSevenY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    <iframe src="{% static 'pdf/engineering/cs_department/7Sem_Syllabus_2021.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingEightY">
+                                <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                  data-mdb-target="#collapseEightY" aria-expanded="false" aria-controls="collapseEightY">
+                                  <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>8th Semester
+                              </a>
+                              </h2>
+                              <div id="collapseEightY" class="accordion-collapse collapse" aria-labelledby="headingEightY"
+                                data-mdb-parent="#accordionExampleY">
+                                <div class="accordion-body" style="height: 600px;">
+                                  <iframe src="{% static 'pdf/engineering/cs_department/8Sem_Syllabus_2021.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+
+
+
+                
+                <div class="tab-pane fade" id="list-Teaching-Plan" role="tabpanel" aria-labelledby="list-settings-list">
+                    
+                    <div class="container">
+                      <h4 class="fw-bold" >TEACHING PLAN </h4>
+                      <hr style="width: auto;">
+      
+                        <div class="accordion" id="accordionExampleY">
+      
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOneY">
+                                <a class="accordion-button" type="button" data-mdb-toggle="collapse"
+                                  data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY">
+                                  <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>1st Semester
+                              </a>
+                              </h2>
+                              <div id="collapseOneY" class="accordion-collapse collapse " aria-labelledby="headingOneY"
+                                data-mdb-parent="#accordionExampleY">
+                                <div class="accordion-body" style="height: 600px;">
+                                    <iframe src="{% static 'pdf/engineering/cs_department/teaching_plan_1st_sem.pdf' %}" frameborder="0" style="height: 100%; width: 100%;"></iframe>
+      
+                                </div>
+                              </div>
+                            </div>
+      
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwoY">
+                                <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                  data-mdb-target="#collapseTwoY" aria-expanded="false" aria-controls="collapseTwoY">
+                                  <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>2nd Semester
+                              </a>
+                              </h2>
+                              <div id="collapseTwoY" class="accordion-collapse collapse" aria-labelledby="headingTwoY"
+                                data-mdb-parent="#accordionExampleY" >
+                                <div class="accordion-body" style="height: 600px;">
+                                  ...
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThreeY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapseThreeY" aria-expanded="false" aria-controls="collapseThreeY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>3rd Semester
+                                </a>
+                                </h2>
+                                <div id="collapseThreeY" class="accordion-collapse collapse" aria-labelledby="headingThreeY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    ....
+      
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+
+
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingfourY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapsefourY" aria-expanded="false" aria-controls="collapsefourY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>4th Semester
+                                </a>
+                                </h2>
+                                <div id="collapsefourY" class="accordion-collapse collapse" aria-labelledby="headingfourY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body">
+
+                                    <div class="d-flex justify-content-center align-items-center">
+                                      <div class="card p-3 shadow" >
+                                        <nav>
+                                          <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">A Section</button>
+                                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">B Section</button>
+                                          </div>
+                                        </nav>
+                                        <div class="tab-content p-3 border" id="nav-tabContent">
+                                          <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">DAA_4A_LessonPlan</h5><hr>
+                                                    <a href="{% static 'pdf\engineering\cs_department\DAA_4A_LessonPlan.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf\engineering\cs_department\DAA_4A_LessonPlan.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title">SUCET OOC LP 4A</h5><hr>
+                                                      <a href="{% static 'pdf\engineering\cs_department\SUCET_OOC_LP_4A_21-22.pdf' %}">View</a><br><br>
+                                                      <a href="{% static 'pdf\engineering\cs_department\SUCET_OOC_LP_4A_21-22.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">LESSON PLAN-DMS</h5><hr>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LESSON PLAN-DMS 21-22 A.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LESSON PLAN-DMS 21-22 A.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">LessonPlan SE</h5><hr>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LessonPlan_SE(2022)-A.docx.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LessonPlan_SE(2022)-A.docx.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">DAA 4B</h5><hr>
+                                                    <a href="{% static 'pdf\engineering\cs_department\DAA_4B_LessonPlan.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf\engineering\cs_department\DAA_4B_LessonPlan.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title">OOC LP</h5><hr>
+                                                      <a href="{% static 'pdf\engineering\cs_department\SUCET_OOC_LP_4B_21-22.pdf' %}">View</a><br><br>
+                                                      <a href="{% static 'pdf\engineering\cs_department\SUCET_OOC_LP_4B_21-22.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">DMS</h5><hr>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LESSON PLAN-DMS 21-22.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LESSON PLAN-DMS 21-22.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">SE</h5><hr>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LessonPlan_SE(2022)-B.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf\engineering\cs_department\LessonPlan_SE(2022)-B.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            </div>
+
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+
+
+
+
+
+
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingfiveY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapsefiveY" aria-expanded="false" aria-controls="collapsefiveY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>5th Semester
+                                </a>
+                                </h2>
+                                <div id="collapsefiveY" class="accordion-collapse collapse" aria-labelledby="headingfiveY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                   ...
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSixY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapseSixY" aria-expanded="false" aria-controls="collapseSixY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>6th Semester
+                                </a>
+                                </h2>
+                                <div id="collapseSixY" class="accordion-collapse collapse" aria-labelledby="headingSixY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                  
+                                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                                      <div class="col">
+                                        <div class="card h-100">
+                                          <div class="card-body">
+                                            <h5 class="card-title">ML</h5><hr>
+                                            <a href="{% static 'pdf\engineering\cs_department\LessonPlan_ML.pdf' %}">View</a><br><br>
+                                            <a href="{% static 'pdf\engineering\cs_department\LessonPlan_ML.pdf' %}" download>Download</a>
+                                          </div>
+                                          <div class="card-footer">
+                                            <small class="text-muted">Updated</small>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col">
+                                        <div class="card h-100">
+                                          <div class="card-body">
+                                              <h5 class="card-title">OOC LP</h5><hr>
+                                              <a href="{% static 'pdf\engineering\cs_department\SSCD lesson plan.pdf' %}">View</a><br><br>
+                                              <a href="{% static 'pdf\engineering\cs_department\SSCD lesson plan.pdf' %}" download>Download</a>
+                                          </div>
+                                          <div class="card-footer">
+                                            <small class="text-muted">Last updated 3 mins ago</small>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col">
+                                        <div class="card h-100">
+                                          <div class="card-body">
+                                            <h5 class="card-title">CRYPTOGRAPHY, NETWORK SECURITY AND CYBER LAW</h5><hr>
+                                            <a href="{% static 'pdf\engineering\cs_department\LESSON_PLAN_CRYPTOGRAPHY, NETWORK SECURITY AND CYBER LAW.pdf' %}">View</a><br><br>
+                                            <a href="{% static 'pdf\engineering\cs_department\LESSON_PLAN_CRYPTOGRAPHY, NETWORK SECURITY AND CYBER LAW.pdf' %}" download>Download</a>
+                                          </div>
+                                          <div class="card-footer">
+                                            <small class="text-muted">Last updated 3 mins ago</small>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSevenY">
+                                  <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                    data-mdb-target="#collapseSevenY" aria-expanded="false" aria-controls="collapseSevenY">
+                                    <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>7th Semester
+                                </a>
+                                </h2>
+                                <div id="collapseSevenY" class="accordion-collapse collapse" aria-labelledby="headingSevenY"
+                                  data-mdb-parent="#accordionExampleY">
+                                  <div class="accordion-body" style="height: 600px;">
+                                    ...
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingEightY">
+                                <a class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                                  data-mdb-target="#collapseEightY" aria-expanded="false" aria-controls="collapseEightY">
+                                  <i class="fas fa-pencil fa-sm me-2 opacity-70"></i>8th Semester
+                              </a>
+                              </h2>
+                              <div id="collapseEightY" class="accordion-collapse collapse" aria-labelledby="headingEightY"
+                                data-mdb-parent="#accordionExampleY">
+                                <div class="accordion-body" style="height: 600px;">
+                                  ...
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                    </div>
+      
+                  </div>
+
+
+                  <div class="tab-pane fade" id="list-Acadamic-Calender" role="tabpanel" aria-labelledby="list-settings-list">
+                        <h4 class="fw-bold" >Calendar of Events 2017-2022 </h4>
+                      <hr style="width: auto;">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                      <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 1</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0001.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0001.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Updated</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                              <h5 class="card-title">Page 2</h5><hr>
+                              <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0002.pdf' %}">View</a><br><br>
+                              <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0002.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 3</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0003.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0003.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 4</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0004.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0004.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 5</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0005.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0005.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 6</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0006.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0006.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 7</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0007.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0007.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 8</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0008.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0008.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 9</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0009.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0009.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 10</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0010.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0010.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 11</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0011.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0011.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <h5 class="card-title">Page 12</h5><hr>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0012.pdf' %}">View</a><br><br>
+                            <a href="{% static 'pdf/engineering/cs_department/calender/Calendar of Events 2017-2022 (1)_page-0012.pdf' %}" download>Download</a>
+                          </div>
+                          <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="tab-pane fade" id="list-Study-Material" role="tabpanel" aria-labelledby="list-settings-list">
+
+
+                      <div class="accordion accordion-borderless" id="accordionFlushExampleX">
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingOneX">
+                                  <button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseOneX" aria-expanded="true" aria-controls="flush-collapseOneX">1st Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseOneX" class="accordion-collapse collapse show" aria-labelledby="flush-headingOneX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                      NONE
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingTwoX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwoX" aria-expanded="false" aria-controls="flush-collapseTwoX">2nd Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseTwoX" class="accordion-collapse collapse" aria-labelledby="flush-headingTwoX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingFourX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFourX" aria-expanded="false" aria-controls="flush-collapseFourX">3rd Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseFourX" class="accordion-collapse collapse" aria-labelledby="flush-headingFourX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+                                      .
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingfiveX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapsefiveX" aria-expanded="false" aria-controls="flush-collapsefiveX">4rth Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapsefiveX" class="accordion-collapse collapse" aria-labelledby="flush-headingfiveX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                    <div class="d-flex justify-content-center align-items-center">
+                                      <div class="card p-3 shadow" >
+                                        <nav>
+                                          <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                            <button class="nav-link active" id="nav-daa-tab" data-bs-toggle="tab" data-bs-target="#nav-daa" type="button" role="tab" aria-controls="nav-daa" aria-selected="true">DAA</button>
+                                            <button class="nav-link" id="nav-dms-tab" data-bs-toggle="tab" data-bs-target="#nav-dms" type="button" role="tab" aria-controls="nav-dms" aria-selected="false">DMS</button>
+                                            <button class="nav-link" id="nav-occ-tab" data-bs-toggle="tab" data-bs-target="#nav-occ" type="button" role="tab" aria-controls="nav-occ" aria-selected="false">OCC</button>
+                                            <button class="nav-link" id="nav-se-tab" data-bs-toggle="tab" data-bs-target="#nav-se" type="button" role="tab" aria-controls="nav-se" aria-selected="false">SE</button>
+                                          </div>
+                                        </nav>
+                                        <div class="tab-content p-3 border" id="nav-tabContent">
+                                          <div class="tab-pane fade active show" id="nav-daa" role="tabpanel" aria-labelledby="nav-daa-tab">
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 1</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Notes_Module1.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Notes_Module1.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title">Module 2</h5><hr>
+                                                      <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module2.pdf' %}">View</a><br><br>
+                                                      <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module2.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">updated </small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 3</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module3.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module3.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 4</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module4.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module4.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                                <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 5</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module5.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/daa/DAA_Module5.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                          <div class="tab-pane fade" id="nav-dms" role="tabpanel" aria-labelledby="nav-dms-tab">
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 1</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS_Module1.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS_Module1.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 2</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS mod 2.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS mod 2.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 3</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS MOD 3.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS MOD 3.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                                <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 4</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS MOD 4.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS MOD 4.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                                <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 5</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS Mod 5.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/dms/DMS Mod 5.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            </div>
+
+                                          </div>
+                                            <div class="tab-pane fade" id="nav-occ" role="tabpanel" aria-labelledby="nav-occ-tab">
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 1</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_19SCS43_NOTES_Module1.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_19SCS43_NOTES_Module1.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title">Module 2</h5><hr>
+                                                      <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-2_Notes.pdf' %}">View</a><br><br>
+                                                      <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-2_Notes.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 3</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-3_Notes.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-3_Notes.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 4</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-4_Notes.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-4_Notes.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                                <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 5</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-5_Notes.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/occ/OOC_Module-5_Notes.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                            <div class="tab-pane fade " id="nav-se" role="tabpanel" aria-labelledby="nav-se-tab">
+
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 1</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/MODULE1_SE.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/MODULE1_SE.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Updated</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title">Module 2</h5><hr>
+                                                      <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 2_SE_SB.pdf' %}">View</a><br><br>
+                                                      <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 2_SE_SB.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 3</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 3_SE_SB.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 3_SE_SB.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 4</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 4_SE_S.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 4_SE_S.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                                <div class="col">
+                                                <div class="card h-100">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Module 5</h5><hr>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 5_SE_SB.pdf' %}">View</a><br><br>
+                                                    <a href="{% static 'pdf/engineering/cs_department/study material/se/Module 5_SE_SB.pdf' %}" download>Download</a>
+                                                  </div>
+                                                  <div class="card-footer">
+                                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingsixX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapsesixX" aria-expanded="false" aria-controls="flush-collapsesixX">5th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapsesixX" class="accordion-collapse collapse" aria-labelledby="flush-headingsixX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingsevenX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapsesevenX" aria-expanded="false" aria-controls="flush-collapsesevenX">6th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapsesevenX" class="accordion-collapse collapse" aria-labelledby="flush-headingsevenX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+                                      <div class="row row-cols-1 row-cols-md-3 g-4">
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK - ML</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -ML.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -ML.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                  <h5 class="card-title">QUESTION BANK - PAP</h5><hr>
+                                                  <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -PAP.pdf' %}">View</a><br><br>
+                                                  <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -PAP.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK SS and CD</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK SS and CD.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK SS and CD.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK CNS</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK_CNS.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK_CNS.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingThreeX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThreeX" aria-expanded="false" aria-controls="flush-collapseThreeX">7th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseThreeX" class="accordion-collapse collapse" aria-labelledby="flush-headingThreeX"
+                                   data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingeightX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseeightX" aria-expanded="false" aria-controls="flush-collapseeightX">8th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseeightX" class="accordion-collapse collapse" aria-labelledby="flush-headingeightX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                  </div>
+
+
+
+                  <div class="tab-pane fade" id="list-Question-Bank" role="tabpanel" aria-labelledby="list-settings-list">
+
+
+                      <div class="accordion accordion-borderless" id="accordionFlushExampleX">
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingOneX">
+                                  <button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseOneX" aria-expanded="true" aria-controls="flush-collapseOneX">1st Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseOneX" class="accordion-collapse collapse show" aria-labelledby="flush-headingOneX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                      NONE
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingTwoX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwoX" aria-expanded="false" aria-controls="flush-collapseTwoX">2nd Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseTwoX" class="accordion-collapse collapse" aria-labelledby="flush-headingTwoX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingFourX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseFourX" aria-expanded="false" aria-controls="flush-collapseFourX">3rd Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseFourX" class="accordion-collapse collapse" aria-labelledby="flush-headingFourX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+                                      .
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingfiveX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapsefiveX" aria-expanded="false" aria-controls="flush-collapsefiveX">4rth Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapsefiveX" class="accordion-collapse collapse" aria-labelledby="flush-headingfiveX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+                                      <div class="row row-cols-1 row-cols-md-3 g-4">
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">DDA QUESTION BANK</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/DAA_QUESTION BANK (1).pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/DAA_QUESTION BANK (1).pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                  <h5 class="card-title">SE QB DIGITIZATION</h5><hr>
+                                                  <a href="{% static 'pdf/engineering/cs_department/SE_QB_DIGITIZATION.pdf' %}">View</a><br><br>
+                                                  <a href="{% static 'pdf/engineering/cs_department/SE_QB_DIGITIZATION.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">OOC QB</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/OOC_QB.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/OOC_QB.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK DMS</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK DMS-21-22 (1).pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK DMS-21-22 (1).pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingsixX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapsesixX" aria-expanded="false" aria-controls="flush-collapsesixX">5th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapsesixX" class="accordion-collapse collapse" aria-labelledby="flush-headingsixX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingsevenX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapsesevenX" aria-expanded="false" aria-controls="flush-collapsesevenX">6th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapsesevenX" class="accordion-collapse collapse" aria-labelledby="flush-headingsevenX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+                                      <div class="row row-cols-1 row-cols-md-3 g-4">
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK - ML</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -ML.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -ML.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                  <h5 class="card-title">QUESTION BANK - PAP</h5><hr>
+                                                  <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -PAP.pdf' %}">View</a><br><br>
+                                                  <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK -PAP.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK SS and CD</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK SS and CD.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK SS and CD.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="card h-100">
+                                              <div class="card-body">
+                                                <h5 class="card-title">QUESTION BANK CNS</h5><hr>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK_CNS.pdf' %}">View</a><br><br>
+                                                <a href="{% static 'pdf/engineering/cs_department/QUESTION BANK_CNS.pdf' %}" download>Download</a>
+                                              </div>
+                                              <div class="card-footer">
+                                                <small class="text-muted">Updated</small>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingThreeX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThreeX" aria-expanded="false" aria-controls="flush-collapseThreeX">7th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseThreeX" class="accordion-collapse collapse" aria-labelledby="flush-headingThreeX"
+                                   data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-headingeightX">
+                                  <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseeightX" aria-expanded="false" aria-controls="flush-collapseeightX">8th Semester
+                                  </button>
+                              </h2>
+                              <div id="flush-collapseeightX" class="accordion-collapse collapse" aria-labelledby="flush-headingeightX" data-mdb-parent="#accordionFlushExampleX">
+                                  <div class="accordion-body">
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                  </div>
+
+
+
+                 <div class="tab-pane fade" id="list-Student-Club" role="tabpanel" aria-labelledby="list-settings-list">
+
+                 <div class="container p-3">
+                  <div class="d-flex align-items-center justify-content-start">
+                    <img src="{% static 'assets\img\ace.png' %}" alt="" style="height: 100px;">
+                    <h4 class="fw-bold" style="padding-left: 20px;" >ACE - Association of Computer Engineer's</h4>
+                  </div>
+                    <hr style="width: auto;">
+                    <h5 class="fw-bold">About ACE</h5>
+                    <p>
+                    The Computer Science and Engineering Student’s Chapter “ACE” (Association of Computer Engineer) was started in the year 2011 with a view to provide platform for Computer Science engineering students to organize activities like seminars, technical talks, guest lectures, etc. Experts and professionals from the industry, research centers and the academia are regularly invited to share their experience and to impart knowledge to the Computer Science engineering students. Election for the various positions of Office Bearers of ACE is conducted on annual basis, in the month of August. The aim of conducting election is to promote the leadership and team building abilities of students, and also to organize various events under the leadership of HOD and Faculty Coordinators.
+                    </p>
+                    <h5 class="fw-bold">Objective of ACE</h5>
+                    <ul>
+                      <li>To promote knowledge enhancement by conducting   various  workshops and expert talks.
+                      </li>
+                      <li>Focuses on overall skill development of computer science students and improve their ability to compete globally.
+                      </li>
+                      <li>Aims to make learning, a fun filled activity by Conducting numerous extra curricular activities.
+                      </li>
+                      <li>Also aims to make computer science engineers socially responsible and make them aware of importance of contributing to the society.
+
+                      </li>
+                    </ul>
+
+                    <h4 class="fw-bold" style="padding-left: 20px;" >Office Bearers 2022 - 2023</h4>
+                    <hr>
+
+
+                     <div class="team-boxed">
+        <div class="container ">
+            <div class="row people justify-content-between">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="{% static 'img/Engineeringimage/Faculty/WhatsApp_Image_2022-11-27_at_19._1.jpg' %}" height="200" width="200">
+                        <h4 class="name fw-bold">DR. Netravathi P S</h4>
+                        <p class="title">Associate Dean and HoD CSE</p>
+<!--                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>-->
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="{% static 'img/Engineeringimage/Faculty/Thanmayee_CSE.png' %}" height="200" width="200">
+                        <h4 class="name fw-bold">MRS. Thanmayee</h4>
+                        <p class="title">ACE coordinator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<hr>
+
+<div class="d-flex align-items-center justify-content-between">
+<h4 class="fw-bold" style="padding-left: 20px;" >ACE - Events </h4>
+<a href='{% url 'engineering_events' %}' class=" btn-primary">View All</a>
+</div></div>
+
+
+                </div>
+
+                  <div class="tab-pane fade" id="list-Industry-Visit" role="tabpanel" aria-labelledby="list-settings-list">
+                     iv
+                  </div>
+                  <div class="tab-pane fade" id="list-Workshop" role="tabpanel" aria-labelledby="list-settings-list">
+                    workshop
+                  </div>
+                  <div class="tab-pane fade" id="list-Placement" role="tabpanel" aria-labelledby="list-settings-list">
+                    placement
+                  </div>
+                  <div class="tab-pane fade" id="list-Alumini" role="tabpanel" aria-labelledby="list-settings-list">
+                    alumini
+                  </div>
+              </div>
+            </div>
+          </div>
+      
+          {% for faculty in faculty  %}
+      <!-- Modal -->
+      <div class="modal fade" id="{{faculty|cut:"."|cut:" "}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="exampleModalLabel">{{faculty.name}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      
+      
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </section>
+
+</main>
+
+
+
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
